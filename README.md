@@ -8,3 +8,27 @@
 4.好友搜索添加，验证  
 5.离线消息存储拉取  
 6.消息都是存储在本地的(除了离线消息)  
+
+# 代码的部署
+可以在ubuntu下使用apt安装libmysqlclient,mysql  
+sudo apt update
+sudo apt install mysql-server  (8.0版本)  
+sudo apt install libmysqlclient-dev  
+sudo apt install libhiredis-dev  
+sudo apt install redis-server  
+sudo apt install libfmt-dev  
+sudo apt install libasio-dev  
+protobuf的话可以去网上搜索安装编译的方法
+
+CMakeList.txt里面  
+set(MYSQL_INCLUDE_DIR /usr/include/mysql)  
+set(MYSQL_LIBRARY /usr/lib/x86_64-linux-gnu/libmysqlclient.so)  
+  
+set(REDIS_INCLUDE_DIR /usr/include/hiredis)  
+set(REDIS_LIBRARY /usr/lib/x86_64-linux-gnu/libhiredis.so)  
+**记得改为自己的路径**  
+
+客户端的话建议使用Qt6.3以上版本，因为使用到一些6.2 6.3后才有的特性，我使用的是6.72  
+qt使用protobuf可以参考  
+https://blog.csdn.net/qq_44667165/article/details/120620032
+
