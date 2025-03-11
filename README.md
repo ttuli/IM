@@ -11,7 +11,7 @@
 
 # 代码的部署
 可以在ubuntu下使用apt安装libmysqlclient,mysql  
-sudo apt update
+sudo apt update  
 sudo apt install mysql-server  (8.0版本)  
 sudo apt install libmysqlclient-dev  
 sudo apt install libhiredis-dev  
