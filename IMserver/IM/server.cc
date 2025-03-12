@@ -28,9 +28,9 @@ int main()
     signal(SIGINT,stopServer);
     signal(SIGTERM, stopServer);
     try {
-        redisConnectionPool::getInstance().init("47.96.69.27",6379, 1);
-        MySQLConnectionPool::getInstance().Initialize("47.96.69.27", 
-            "koung", "zihang623", "IM", 3306, 2);
+        redisConnectionPool::getInstance().init("server addr",6379, 1);
+        MySQLConnectionPool::getInstance().Initialize("server addr", 
+            "name", "password", "IM", 3306, 2);
         AsyncExecutorPool::getInstance().Initialize(2);
         AsyncServer::getInstance()->init(io_context, PORT);
         puts("server start");
