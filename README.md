@@ -29,6 +29,8 @@ set(REDIS_LIBRARY /usr/lib/x86_64-linux-gnu/libhiredis.so)
 **记得改为自己的路径**  
 
 客户端的话建议使用Qt6.3以上版本，因为使用到一些6.2 6.3后才有的特性，我使用的是6.72  
+客户端使用到了sqlite,protobuf  
+**记得将networkmanager.h里面SERVER_ADDR改为自己服务器地址**
 qt使用protobuf可以参考  
 https://blog.csdn.net/qq_44667165/article/details/120620032
 
