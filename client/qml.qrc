@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Register.qml</file>
+        <file>Login.qml</file>
+    </qresource>
+    <qresource prefix="/ChatState">
+        <file>ChatDialog.qml</file>
+        <file>LeftChoiceColumn.qml</file>
+        <file>TitleBar.qml</file>
+        <file>PersonalInfoDialog.qml</file>
+        <file>AddFriend.qml</file>
+        <file>MessagePopup.qml</file>
+        <file>ChatList.qml</file>
+        <file>ExecutingModal.qml</file>
+        <file>CustomMenu.qml</file>
+        <file>CustomDialog.qml</file>
+    </qresource>
+    <qresource prefix="/FriendAGroup">
+        <file>FriendList.qml</file>
+        <file>MainControl.qml</file>
+        <file>VerifyDia.qml</file>
+    </qresource>
+    <qresource prefix="/PictureViewer">
+        <file>PictureView.qml</file>
+        <file>ViewTitle.qml</file>
+    </qresource>
+</RCC>

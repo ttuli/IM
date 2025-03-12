@@ -1,0 +1,211 @@
+syntax = "proto3";
+
+message ClientId{
+    string id=1;
+}
+
+message LoginRequest{
+    string account=1;
+    string password=2;
+}
+
+message RegisterRequest{
+    string username=1;
+    string password=2;
+    string email=3;
+}
+
+//搜索好友，群
+message SearchRequest{
+    enum State{
+        FRIEND=0;
+        GROUD=1;
+    }
+    enum Way{
+        BY_ACCOUNT=0;
+        BY_NAME=1;
+    }
+
+    State st=1;
+    Way way=2;
+    string content=3;
+}
+
+//加好友
+message AddRequest{
+    enum State{
+        FRIEND=0;
+        GROUP=1;
+    }
+    State st=1;
+    string user_id=2;
+    string friend_id=3;
+}
+
+message ApplyRequest{
+    string user_id=1;
+}
+
+message UpdateRelationship{
+    string user_id=1;
+    string friend_id=2;
+    bool result=3;
+}
+
+message UserInfoRequest{
+    string user_id=1;
+}
+
+message FriendListRequest{
+    string user_id=1;
+}
+
+message addImageRequest{
+    string md5=1;
+    bytes img_data=2;
+}
+message GetImageRequest{
+    string md5=1;
+}
+
+//主动拉取的请求
+message PullRequest{
+    oneof request_type {
+        LoginRequest login_request=1;
+        RegisterRequest register_request=2;
+        ClientId client_id=3; //发送连接自身id
+        UpdateImaRequest ima_request=4;
+        SearchRequest search_request=5;
+        AddRequest add_request=6;
+        ApplyRequest apply_request=7;
+        UpdateRelationship update_rela=8;
+        UserInfoRequest user_info=9;
+        FriendListRequest friend_list=10;
+        CommunicationRequest communication=11;
+        offlineMsgRequest offline_request=12;
+        heartCheck heart=13;
+        GetImageRequest image_request=14;
+        addImageRequest add_image=15;
+    }
+}
+
+message UserInfoRespond{
+    string account=1;
+    string name=2;
+    string email=3;
+    bytes image=4;
+    string createTime=5;
+}
+
+message LoginARegisterRespond{
+    bool success=1;
+    string msg=2;
+}
+
+message ApplyRespond{
+    repeated ApplyInfo infos = 1;
+}
+message ApplyInfo{
+    oneof request_type{
+        FriendApply friend_apply=1;
+    }
+    string apply_time=2;
+}
+message FriendApply{
+    string user_id=1;
+    int32 state=2;
+}
+
+message SearchInfo{
+    string account=1;
+    string name=2;
+}
+message SearchRespond{
+    repeated SearchInfo infos = 1;
+}
+
+message AddRespond{
+    bool result=1;
+}
+
+message FriendListRespond{
+    repeated string user_id=1;
+}
+
+message GetImageRespond{
+    bytes img_data=1;
+}
+message addImageRespond{
+    bool result=1;
+}
+
+message PullRespond{
+    oneof request_type {
+        LoginARegisterRespond lginReg_respond=1;
+        UpdateImaRespond ima_respond=2;
+        SearchRespond search_respond=3;
+        AddRespond add_respond=4;
+        ServerMsg server_msg=5;
+        ApplyRespond apply_respond=6;
+        UpdateRelationship update_rela=7;
+        UserInfoRespond user_info=8;
+        FriendListRespond friend_list=9;
+        CommunicationRespond communication=10;
+        offlineMsgRespond offline_respond=11;
+        GetImageRespond image_respond=12;
+        addImageRespond add_image=13;
+    }
+}
+
+message UpdateImaRequest{
+    string user_id=1;
+    bytes img_date=2;
+}
+message UpdateImaRespond{
+    bool success=1;
+    string msg=2;
+}
+
+message offlineMsgRequest{
+    string user_id=1;
+}
+message offlineMsgRespond{
+    repeated offline_info info=1;
+}
+message offline_info{
+    string message_id=1;
+    bytes message=2;
+    string timeStemp=3;
+    string friend_id=4;
+    int32 msg_type=5;
+    string md5=6;
+}
+
+//服务器主动发送的消息
+message ServerMsg{
+    oneof msg_type{
+        friendAdd friend_add=1;
+        CommunicationRequest communication=2;
+        heartCheck heart=3;
+    }
+}
+
+message heartCheck{
+}
+
+message friendAdd{
+    string user_id=1;
+}
+
+message CommunicationRequest{
+    string user_id=1;
+    string target_id=2;
+    bytes content=3;
+    string message_id=4;
+    int32 msg_type=5;
+    string md5=6;
+}
+message CommunicationRespond{
+    string message_id=1;
+    bool result=2;
+}
