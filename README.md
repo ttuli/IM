@@ -9,7 +9,7 @@
 5.离线消息存储拉取  
 6.消息都是存储在本地的(除了离线消息)  
 
-# 代码的部署
+# 代码的部署(Ubuntu 22.04)
 可以在ubuntu下使用apt安装libmysqlclient,mysql  
 sudo apt update  
 sudo apt install mysql-server  (8.0版本)  
@@ -18,7 +18,7 @@ sudo apt install libhiredis-dev
 sudo apt install redis-server  
 sudo apt install libfmt-dev  
 sudo apt install libasio-dev  
-protobuf的话可以去网上搜索安装编译的方法
+ apt install protobuf-compiler
 
 CMakeList.txt里面  
 set(MYSQL_INCLUDE_DIR /usr/include/mysql)  
